@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -95,12 +96,9 @@ namespace Organizer
             }
             else
             {
-                MessageBox.Show("УЖе есть");
+                MessageBox.Show("Уже есть");
                 dataBase.CloseConnection();
-            }
-                
-
-            
+            }            
         }
 
         public bool IsUserExists()
@@ -129,15 +127,13 @@ namespace Organizer
             {
                 dataBase.CloseConnection();
                 return false;
-            }
-
-            
-                
+            }        
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Close();
+            new Thread(OpenForm).Start();
         }
 
         private void btnHide_Click(object sender, EventArgs e)
@@ -155,9 +151,13 @@ namespace Organizer
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            var frmLogin = new frmLogin();
-            frmLogin.Show();
+            this.Close();
+            new Thread(OpenForm).Start();
         }
+        private void OpenForm()
+        {
+            Application.Run(new frmLogin());
+        }
+
     }
 }

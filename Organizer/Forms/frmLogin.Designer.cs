@@ -40,10 +40,13 @@ namespace Organizer
             this.btnClose = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnHide = new System.Windows.Forms.Button();
+            this.cbShowPass = new System.Windows.Forms.CheckBox();
+            this.pbLoading = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.cbShowPass = new System.Windows.Forms.CheckBox();
+            this.cbRememberMe = new System.Windows.Forms.CheckBox();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLoading)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -83,7 +86,7 @@ namespace Organizer
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogin.Font = new System.Drawing.Font("Fulbo Argenta", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogin.ForeColor = System.Drawing.Color.White;
-            this.btnLogin.Location = new System.Drawing.Point(29, 323);
+            this.btnLogin.Location = new System.Drawing.Point(29, 334);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(246, 42);
             this.btnLogin.TabIndex = 25;
@@ -98,7 +101,7 @@ namespace Organizer
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Fulbo Argenta", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(29, 382);
+            this.button1.Location = new System.Drawing.Point(29, 391);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(246, 42);
             this.button1.TabIndex = 26;
@@ -114,6 +117,7 @@ namespace Organizer
             this.tbUser.Font = new System.Drawing.Font("Corbel", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbUser.ForeColor = System.Drawing.SystemColors.Menu;
             this.tbUser.Location = new System.Drawing.Point(62, 189);
+            this.tbUser.MaxLength = 20;
             this.tbUser.Name = "tbUser";
             this.tbUser.Size = new System.Drawing.Size(213, 26);
             this.tbUser.TabIndex = 27;
@@ -127,6 +131,7 @@ namespace Organizer
             this.tbPass.Font = new System.Drawing.Font("Corbel", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbPass.ForeColor = System.Drawing.SystemColors.Menu;
             this.tbPass.Location = new System.Drawing.Point(62, 239);
+            this.tbPass.MaxLength = 20;
             this.tbPass.Name = "tbPass";
             this.tbPass.PasswordChar = '*';
             this.tbPass.Size = new System.Drawing.Size(213, 26);
@@ -140,7 +145,7 @@ namespace Organizer
             this.lbLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbLogin.Font = new System.Drawing.Font("Fulbo Argenta", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbLogin.ForeColor = System.Drawing.Color.White;
-            this.lbLogin.Location = new System.Drawing.Point(43, 88);
+            this.lbLogin.Location = new System.Drawing.Point(42, 53);
             this.lbLogin.Name = "lbLogin";
             this.lbLogin.Size = new System.Drawing.Size(201, 53);
             this.lbLogin.TabIndex = 19;
@@ -153,9 +158,9 @@ namespace Organizer
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(273, 3);
+            this.btnClose.Location = new System.Drawing.Point(261, 3);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(36, 36);
+            this.btnClose.Size = new System.Drawing.Size(39, 36);
             this.btnClose.TabIndex = 29;
             this.btnClose.Text = "X";
             this.btnClose.UseVisualStyleBackColor = false;
@@ -179,13 +184,36 @@ namespace Organizer
             this.btnHide.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHide.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnHide.ForeColor = System.Drawing.Color.White;
-            this.btnHide.Location = new System.Drawing.Point(241, 3);
+            this.btnHide.Location = new System.Drawing.Point(219, 3);
             this.btnHide.Name = "btnHide";
             this.btnHide.Size = new System.Drawing.Size(36, 36);
             this.btnHide.TabIndex = 30;
             this.btnHide.Text = "-";
             this.btnHide.UseVisualStyleBackColor = false;
             this.btnHide.Click += new System.EventHandler(this.btnHide_Click);
+            // 
+            // cbShowPass
+            // 
+            this.cbShowPass.AutoSize = true;
+            this.cbShowPass.ForeColor = System.Drawing.SystemColors.Control;
+            this.cbShowPass.Location = new System.Drawing.Point(29, 279);
+            this.cbShowPass.Name = "cbShowPass";
+            this.cbShowPass.Size = new System.Drawing.Size(114, 17);
+            this.cbShowPass.TabIndex = 31;
+            this.cbShowPass.Text = "Показать пароль";
+            this.cbShowPass.UseVisualStyleBackColor = true;
+            this.cbShowPass.CheckedChanged += new System.EventHandler(this.cbShowPass_CheckedChanged);
+            // 
+            // pbLoading
+            // 
+            this.pbLoading.Image = global::Organizer.Properties.Resources.Loading;
+            this.pbLoading.Location = new System.Drawing.Point(107, 109);
+            this.pbLoading.Name = "pbLoading";
+            this.pbLoading.Size = new System.Drawing.Size(81, 74);
+            this.pbLoading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbLoading.TabIndex = 32;
+            this.pbLoading.TabStop = false;
+            this.pbLoading.Visible = false;
             // 
             // pictureBox2
             // 
@@ -205,24 +233,25 @@ namespace Organizer
             this.pictureBox1.TabIndex = 20;
             this.pictureBox1.TabStop = false;
             // 
-            // cbShowPass
+            // cbRememberMe
             // 
-            this.cbShowPass.AutoSize = true;
-            this.cbShowPass.ForeColor = System.Drawing.SystemColors.Control;
-            this.cbShowPass.Location = new System.Drawing.Point(29, 276);
-            this.cbShowPass.Name = "cbShowPass";
-            this.cbShowPass.Size = new System.Drawing.Size(114, 17);
-            this.cbShowPass.TabIndex = 31;
-            this.cbShowPass.Text = "Показать пароль";
-            this.cbShowPass.UseVisualStyleBackColor = true;
-            this.cbShowPass.CheckedChanged += new System.EventHandler(this.cbShowPass_CheckedChanged);
+            this.cbRememberMe.AutoSize = true;
+            this.cbRememberMe.ForeColor = System.Drawing.SystemColors.Control;
+            this.cbRememberMe.Location = new System.Drawing.Point(29, 302);
+            this.cbRememberMe.Name = "cbRememberMe";
+            this.cbRememberMe.Size = new System.Drawing.Size(111, 17);
+            this.cbRememberMe.TabIndex = 33;
+            this.cbRememberMe.Text = "Запомнить меня";
+            this.cbRememberMe.UseVisualStyleBackColor = true;
             // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(68)))), ((int)(((byte)(110)))));
-            this.ClientSize = new System.Drawing.Size(307, 456);
+            this.ClientSize = new System.Drawing.Size(300, 459);
+            this.Controls.Add(this.cbRememberMe);
+            this.Controls.Add(this.pbLoading);
             this.Controls.Add(this.cbShowPass);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.tbPass);
@@ -239,6 +268,7 @@ namespace Organizer
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbLoading)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -262,6 +292,8 @@ namespace Organizer
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button btnHide;
         private System.Windows.Forms.CheckBox cbShowPass;
+        private System.Windows.Forms.PictureBox pbLoading;
+        private System.Windows.Forms.CheckBox cbRememberMe;
     }
 }
 

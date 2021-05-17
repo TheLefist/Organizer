@@ -33,11 +33,11 @@ namespace Organizer
             PostMessage(this.Handle, WM_SYSCOMMAND, DOMOVE, 0);
         }
 
-        public frmMain(string userName)
+        public frmMain()
         {   
             InitializeComponent();
-            lbUser.Text = $"{userName}";
-            lbHello.Text = $"Добрый день, {userName}";
+            //lbUser.Text = $"{userName}";
+            //lbHello.Text = $"Добрый день, {userName}";
             Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 25, 25));
         }
 

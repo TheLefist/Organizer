@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
 namespace Organizer
@@ -16,12 +17,20 @@ namespace Organizer
         public void OpenConnection() // Открываемся соединение
         {
             if (connection.State == System.Data.ConnectionState.Closed)
-                connection.Open();     
+                connection.Open();
         }
+
         public void CloseConnection() //Закрываем соединение
         {
-            if (connection.State == System.Data.ConnectionState.Open)
-                connection.Close();
+            try
+            {
+                if (connection.State == System.Data.ConnectionState.Open)
+                    connection.Close();
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка закрытия соединения с базой данных");
+            } 
         }
         public MySqlConnection GetConnection()
         {
