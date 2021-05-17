@@ -29,8 +29,6 @@ namespace Organizer
         public frmLogin()
         {
             InitializeComponent();
-            tbUser.Text = user;
-            tbPass.Text = pass;
         }
 
         public void CheakButton(int cheakButton)
@@ -45,7 +43,7 @@ namespace Organizer
                 this.cbShowPass.Enabled = true;
                 this.cbRememberMe.Enabled = true;
                 this.pbLoading.Visible = false;
-                Globals.cheakButton = 0;
+                Globals.cheakButtonLogin = 0;
 
             }
             if (cheakButton == 0)
@@ -66,7 +64,7 @@ namespace Organizer
 
             string loginUser = tbUser.Text;
             string passUser = tbPass.Text;
-            CheakButton(Globals.cheakButton);
+            CheakButton(Globals.cheakButtonLogin);
 
             await Task.Run(() =>
             {
@@ -85,8 +83,8 @@ namespace Organizer
                 catch
                 {
                     MessageBox.Show("Ошибка установки соединения с базой данных");
-                    Globals.cheakButton = 1;
-                    BeginInvoke((MethodInvoker)(() => { CheakButton(Globals.cheakButton); }));
+                    Globals.cheakButtonLogin = 1;
+                    BeginInvoke((MethodInvoker)(() => { CheakButton(Globals.cheakButtonLogin); }));
                     return;
                 }
 
@@ -94,7 +92,7 @@ namespace Organizer
                 adapter.SelectCommand = command;
                 adapter.Fill(table);
 
-                if (table.Rows.Count > 0)
+                if (table.Rows.Count > 0) //если найдена в бд
                 {
                     dataBase.CloseConnection();
 
@@ -111,9 +109,9 @@ namespace Organizer
                     MessageBox.Show("Неверно указан логин или пароль");
                     user = tbUser.Text;
                     pass = tbPass.Text;
-                    Globals.cheakButton = 1;
+                    Globals.cheakButtonLogin = 1;
 
-                    BeginInvoke((MethodInvoker)(() => { CheakButton(Globals.cheakButton); }));
+                    BeginInvoke((MethodInvoker)(() => { CheakButton(Globals.cheakButtonLogin); }));
                 }
             });
         }

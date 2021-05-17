@@ -121,6 +121,7 @@ namespace Organizer
             this.tbUser.Name = "tbUser";
             this.tbUser.Size = new System.Drawing.Size(213, 26);
             this.tbUser.TabIndex = 27;
+            this.tbUser.Text = "UserName";
             this.tbUser.Enter += new System.EventHandler(this.tbUser_Enter);
             this.tbUser.Leave += new System.EventHandler(this.tbUser_Leave);
             // 
@@ -131,11 +132,12 @@ namespace Organizer
             this.tbPass.Font = new System.Drawing.Font("Corbel", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbPass.ForeColor = System.Drawing.SystemColors.Menu;
             this.tbPass.Location = new System.Drawing.Point(62, 239);
-            this.tbPass.MaxLength = 20;
+            this.tbPass.MaxLength = 32;
             this.tbPass.Name = "tbPass";
             this.tbPass.PasswordChar = '*';
             this.tbPass.Size = new System.Drawing.Size(213, 26);
             this.tbPass.TabIndex = 28;
+            this.tbPass.Text = "PassWord";
             this.tbPass.Enter += new System.EventHandler(this.tbPass_Enter);
             this.tbPass.Leave += new System.EventHandler(this.tbPass_Leave);
             // 

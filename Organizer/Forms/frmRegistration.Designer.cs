@@ -29,6 +29,7 @@ namespace Organizer
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lbltitle = new System.Windows.Forms.Label();
             this.btnRegistration = new System.Windows.Forms.Button();
             this.tbUser = new System.Windows.Forms.TextBox();
@@ -39,9 +40,9 @@ namespace Organizer
             this.btnHide = new System.Windows.Forms.Button();
             this.btnLogin = new System.Windows.Forms.Button();
             this.cbShowPass = new System.Windows.Forms.CheckBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.tbMail = new System.Windows.Forms.TextBox();
+            this.tbName = new System.Windows.Forms.TextBox();
+            this.tbPass2 = new System.Windows.Forms.TextBox();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -53,6 +54,12 @@ namespace Organizer
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lbNameLenght = new System.Windows.Forms.Label();
+            this.ProcessingLenght = new System.Windows.Forms.Timer(this.components);
+            this.lbMailLenght = new System.Windows.Forms.Label();
+            this.lbUserLenght = new System.Windows.Forms.Label();
+            this.lbPassLenght = new System.Windows.Forms.Label();
+            this.lbPass2Lenght = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLoading)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -97,8 +104,9 @@ namespace Organizer
             this.tbUser.Font = new System.Drawing.Font("Corbel", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbUser.ForeColor = System.Drawing.SystemColors.Menu;
             this.tbUser.Location = new System.Drawing.Point(81, 305);
+            this.tbUser.MaxLength = 20;
             this.tbUser.Name = "tbUser";
-            this.tbUser.Size = new System.Drawing.Size(213, 26);
+            this.tbUser.Size = new System.Drawing.Size(265, 26);
             this.tbUser.TabIndex = 27;
             this.tbUser.Text = "Введите имя аккаунта";
             this.tbUser.Enter += new System.EventHandler(this.tbUser_Enter);
@@ -111,8 +119,9 @@ namespace Organizer
             this.tbPass.Font = new System.Drawing.Font("Corbel", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbPass.ForeColor = System.Drawing.SystemColors.Menu;
             this.tbPass.Location = new System.Drawing.Point(81, 355);
+            this.tbPass.MaxLength = 32;
             this.tbPass.Name = "tbPass";
-            this.tbPass.Size = new System.Drawing.Size(213, 26);
+            this.tbPass.Size = new System.Drawing.Size(265, 26);
             this.tbPass.TabIndex = 28;
             this.tbPass.Text = "Введите пароль";
             this.tbPass.Enter += new System.EventHandler(this.tbPass_Enter);
@@ -198,42 +207,51 @@ namespace Organizer
             this.cbShowPass.UseVisualStyleBackColor = true;
             this.cbShowPass.CheckedChanged += new System.EventHandler(this.cbShowPass_CheckedChanged);
             // 
-            // textBox1
+            // tbMail
             // 
-            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(68)))), ((int)(((byte)(110)))));
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Corbel", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.ForeColor = System.Drawing.SystemColors.Menu;
-            this.textBox1.Location = new System.Drawing.Point(81, 255);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(278, 26);
-            this.textBox1.TabIndex = 38;
-            this.textBox1.Text = "Введите ваш e-mail";
+            this.tbMail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(68)))), ((int)(((byte)(110)))));
+            this.tbMail.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbMail.Font = new System.Drawing.Font("Corbel", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbMail.ForeColor = System.Drawing.SystemColors.Menu;
+            this.tbMail.Location = new System.Drawing.Point(81, 255);
+            this.tbMail.MaxLength = 255;
+            this.tbMail.Name = "tbMail";
+            this.tbMail.Size = new System.Drawing.Size(265, 26);
+            this.tbMail.TabIndex = 38;
+            this.tbMail.Text = "Введите ваш e-mail";
+            this.tbMail.Enter += new System.EventHandler(this.tbMail_Enter);
+            this.tbMail.Leave += new System.EventHandler(this.tbMail_Leave);
             // 
-            // textBox2
+            // tbName
             // 
-            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(68)))), ((int)(((byte)(110)))));
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.Font = new System.Drawing.Font("Corbel", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.ForeColor = System.Drawing.SystemColors.Menu;
-            this.textBox2.Location = new System.Drawing.Point(81, 205);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(213, 26);
-            this.textBox2.TabIndex = 37;
-            this.textBox2.Text = "Введите ваше имя";
+            this.tbName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(68)))), ((int)(((byte)(110)))));
+            this.tbName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbName.Font = new System.Drawing.Font("Corbel", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbName.ForeColor = System.Drawing.SystemColors.Menu;
+            this.tbName.Location = new System.Drawing.Point(81, 205);
+            this.tbName.MaxLength = 30;
+            this.tbName.Name = "tbName";
+            this.tbName.Size = new System.Drawing.Size(265, 26);
+            this.tbName.TabIndex = 37;
+            this.tbName.Text = "Введите ваше имя";
+            this.tbName.Enter += new System.EventHandler(this.tbName_Enter);
+            this.tbName.Leave += new System.EventHandler(this.tbName_Leave);
             // 
-            // textBox3
+            // tbPass2
             // 
-            this.textBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(68)))), ((int)(((byte)(110)))));
-            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox3.Font = new System.Drawing.Font("Corbel", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.ForeColor = System.Drawing.SystemColors.Menu;
-            this.textBox3.Location = new System.Drawing.Point(81, 400);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(246, 26);
-            this.textBox3.TabIndex = 41;
-            this.textBox3.Tag = "";
-            this.textBox3.Text = "Введите пароль ещё раз";
+            this.tbPass2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(68)))), ((int)(((byte)(110)))));
+            this.tbPass2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbPass2.Font = new System.Drawing.Font("Corbel", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbPass2.ForeColor = System.Drawing.SystemColors.Menu;
+            this.tbPass2.Location = new System.Drawing.Point(81, 400);
+            this.tbPass2.MaxLength = 32;
+            this.tbPass2.Name = "tbPass2";
+            this.tbPass2.Size = new System.Drawing.Size(265, 26);
+            this.tbPass2.TabIndex = 41;
+            this.tbPass2.Tag = "";
+            this.tbPass2.Text = "Введите пароль ещё раз";
+            this.tbPass2.Enter += new System.EventHandler(this.tbPass2_Enter);
+            this.tbPass2.Leave += new System.EventHandler(this.tbPass2_Leave);
             // 
             // panel6
             // 
@@ -331,22 +349,87 @@ namespace Organizer
             this.pictureBox1.TabIndex = 20;
             this.pictureBox1.TabStop = false;
             // 
+            // lbNameLenght
+            // 
+            this.lbNameLenght.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbNameLenght.Font = new System.Drawing.Font("Fulbo Argenta", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbNameLenght.ForeColor = System.Drawing.Color.White;
+            this.lbNameLenght.Location = new System.Drawing.Point(365, 199);
+            this.lbNameLenght.Name = "lbNameLenght";
+            this.lbNameLenght.Size = new System.Drawing.Size(52, 33);
+            this.lbNameLenght.TabIndex = 46;
+            this.lbNameLenght.Text = "30";
+            // 
+            // ProcessingLenght
+            // 
+            this.ProcessingLenght.Enabled = true;
+            this.ProcessingLenght.Tick += new System.EventHandler(this.ProcessingLenght_Tick);
+            // 
+            // lbMailLenght
+            // 
+            this.lbMailLenght.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbMailLenght.Font = new System.Drawing.Font("Fulbo Argenta", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbMailLenght.ForeColor = System.Drawing.Color.White;
+            this.lbMailLenght.Location = new System.Drawing.Point(352, 251);
+            this.lbMailLenght.Name = "lbMailLenght";
+            this.lbMailLenght.Size = new System.Drawing.Size(65, 33);
+            this.lbMailLenght.TabIndex = 47;
+            this.lbMailLenght.Text = "255";
+            // 
+            // lbUserLenght
+            // 
+            this.lbUserLenght.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbUserLenght.Font = new System.Drawing.Font("Fulbo Argenta", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbUserLenght.ForeColor = System.Drawing.Color.White;
+            this.lbUserLenght.Location = new System.Drawing.Point(364, 301);
+            this.lbUserLenght.Name = "lbUserLenght";
+            this.lbUserLenght.Size = new System.Drawing.Size(52, 33);
+            this.lbUserLenght.TabIndex = 48;
+            this.lbUserLenght.Text = "20";
+            // 
+            // lbPassLenght
+            // 
+            this.lbPassLenght.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbPassLenght.Font = new System.Drawing.Font("Fulbo Argenta", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbPassLenght.ForeColor = System.Drawing.Color.White;
+            this.lbPassLenght.Location = new System.Drawing.Point(365, 349);
+            this.lbPassLenght.Name = "lbPassLenght";
+            this.lbPassLenght.Size = new System.Drawing.Size(52, 33);
+            this.lbPassLenght.TabIndex = 49;
+            this.lbPassLenght.Text = "32";
+            // 
+            // lbPass2Lenght
+            // 
+            this.lbPass2Lenght.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbPass2Lenght.Font = new System.Drawing.Font("Fulbo Argenta", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbPass2Lenght.ForeColor = System.Drawing.Color.White;
+            this.lbPass2Lenght.Location = new System.Drawing.Point(365, 394);
+            this.lbPass2Lenght.Name = "lbPass2Lenght";
+            this.lbPass2Lenght.Size = new System.Drawing.Size(52, 33);
+            this.lbPass2Lenght.TabIndex = 50;
+            this.lbPass2Lenght.Text = "32";
+            // 
             // frmRegistration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(68)))), ((int)(((byte)(110)))));
             this.ClientSize = new System.Drawing.Size(441, 652);
+            this.Controls.Add(this.lbPass2Lenght);
+            this.Controls.Add(this.lbPassLenght);
+            this.Controls.Add(this.lbUserLenght);
+            this.Controls.Add(this.lbMailLenght);
+            this.Controls.Add(this.lbNameLenght);
             this.Controls.Add(this.pbLoading);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.tbPass2);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.pictureBox5);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.tbMail);
+            this.Controls.Add(this.tbName);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.cbShowPass);
@@ -388,11 +471,11 @@ namespace Organizer
         private System.Windows.Forms.Button btnHide;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.CheckBox cbShowPass;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox tbMail;
+        private System.Windows.Forms.TextBox tbName;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox tbPass2;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.Panel panel2;
@@ -400,6 +483,12 @@ namespace Organizer
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.PictureBox pbLoading;
+        private System.Windows.Forms.Label lbNameLenght;
+        private System.Windows.Forms.Timer ProcessingLenght;
+        private System.Windows.Forms.Label lbMailLenght;
+        private System.Windows.Forms.Label lbUserLenght;
+        private System.Windows.Forms.Label lbPassLenght;
+        private System.Windows.Forms.Label lbPass2Lenght;
     }
 }
 
