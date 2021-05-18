@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using MySql.Data.MySqlClient;
 
 namespace Organizer
 {
@@ -33,11 +34,20 @@ namespace Organizer
             PostMessage(this.Handle, WM_SYSCOMMAND, DOMOVE, 0);
         }
 
-        public frmMain()
-        {   
+        public frmMain(string login)
+        {
+            DataBase dataBase = new DataBase();  
+
+            MySqlCommand command = new MySqlCommand("SELECT name FROM Users WHERE login = @uL", dataBase.GetConnection());
+            command.Parameters.Add("@uL", MySqlDbType.VarChar).Value = login;
+
+            dataBase.OpenConnection();
+            string userName = command.ExecuteScalar().ToString();
+            dataBase.CloseConnection();
+
             InitializeComponent();
-            //lbUser.Text = $"{userName}";
-            //lbHello.Text = $"Добрый день, {userName}";
+            lbUser.Text = $"{userName}";
+            lbHello.Text = $"Добрый день, {userName}";
             Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 25, 25));
         }
 

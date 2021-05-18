@@ -26,6 +26,7 @@ namespace Organizer
 
         static string user = "UserName";
         static string pass = "PassWord";
+        static string login;
         public frmLogin()
         {
             InitializeComponent();
@@ -72,7 +73,7 @@ namespace Organizer
                 DataTable table = new DataTable();
                 MySqlDataAdapter adapter = new MySqlDataAdapter();
 
-                MySqlCommand command = new MySqlCommand("SELECT * FROM `Users` WHERE `login` = @uL AND `pass` = @uP", dataBase.GetConnection());
+                MySqlCommand command = new MySqlCommand("SELECT * FROM Users WHERE login = @uL AND pass = @uP", dataBase.GetConnection());
                 command.Parameters.Add("@uL", MySqlDbType.VarChar).Value = loginUser;
                 command.Parameters.Add("@uP", MySqlDbType.VarChar).Value = passUser;
 
@@ -95,7 +96,7 @@ namespace Organizer
                 if (table.Rows.Count > 0) //если найдена в бд
                 {
                     dataBase.CloseConnection();
-
+                    login = tbUser.Text;
                     BeginInvoke((MethodInvoker)(() => {
                         this.Close();
                         new Thread(OpenFormMain).Start();
@@ -159,7 +160,7 @@ namespace Organizer
         }
         private void OpenFormMain()
         {
-            Application.Run(new frmMain());
+            Application.Run(new frmMain(login));
         }
 
         private void cbShowPass_CheckedChanged(object sender, EventArgs e)

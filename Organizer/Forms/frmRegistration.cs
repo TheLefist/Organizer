@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Mail;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
@@ -88,7 +89,13 @@ namespace Organizer
             {
                 MessageBox.Show("Введенные пароли не совпадают");
                 return;
-            }  
+            }
+
+            if (!IsValidMail(tbMail.Text))
+            {
+                MessageBox.Show("Некорректный адрес электронной почты");
+            }
+
 
             string nameUser =   tbName.Text;
             string mailUser =   tbMail.Text;
@@ -103,7 +110,7 @@ namespace Organizer
                     return;
 
                 DataBase dataBase = new DataBase();
-                MySqlCommand command = new MySqlCommand("INSERT INTO `Users` (`login`, `pass`, `mail`, `name`) VALUES (@login, @pass, @mail, @name);", dataBase.GetConnection());
+                MySqlCommand command = new MySqlCommand("INSERT INTO Users (login, pass, mail, name) VALUES (@login, @pass, @mail, @name);", dataBase.GetConnection());
 
                 command.Parameters.Add("@login", MySqlDbType.VarChar).Value = loginUser;
                 command.Parameters.Add("@pass", MySqlDbType.VarChar).Value = passUser;
@@ -128,6 +135,20 @@ namespace Organizer
             });
         }
 
+
+        public bool IsValidMail(string emailaddress)
+        {
+            try
+            {
+                MailAddress m = new MailAddress(emailaddress);
+
+                return true;
+            }
+            catch (FormatException)
+            {
+                return false;
+            }
+        }
 
         public bool IsUserExists()
         {
