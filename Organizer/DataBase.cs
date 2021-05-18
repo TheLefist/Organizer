@@ -8,21 +8,12 @@ using MySql.Data.MySqlClient;
 
 namespace Organizer
 {
-    class DataBase : IDisposable
+    class DataBase
     {
 
         static string keyConnection = "server=remotemysql.com;port=3306;username=siHHuaKv3R;password=OGpWnQ1Ofy;database=siHHuaKv3R";
 
         MySqlConnection connection = new MySqlConnection(keyConnection); // Конектимся к бд
-
-        private bool _disposed;
-
-        public void Dispose()
-        {
-            if (_disposed) return;
-
-            connection.Dispose();
-        }
 
 
         public void OpenConnection() // Открываемся соединение

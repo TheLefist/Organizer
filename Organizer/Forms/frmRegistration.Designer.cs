@@ -414,7 +414,7 @@ namespace Organizer
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(68)))), ((int)(((byte)(110)))));
-            this.ClientSize = new System.Drawing.Size(441, 652);
+            this.ClientSize = new System.Drawing.Size(441, 644);
             this.Controls.Add(this.lbPass2Lenght);
             this.Controls.Add(this.lbPassLenght);
             this.Controls.Add(this.lbUserLenght);

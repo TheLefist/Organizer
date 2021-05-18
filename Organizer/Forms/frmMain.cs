@@ -9,11 +9,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using MySql.Data.MySqlClient;
+using System.Threading;
 
 namespace Organizer
 {
     public partial class frmMain : Form
     {
+        #region Import
         [DllImport("user32", CharSet = CharSet.Auto)]
         internal extern static bool PostMessage(IntPtr hWnd, uint Msg, uint WParam, uint LParam);
 
@@ -27,6 +29,7 @@ namespace Organizer
 
         private static extern IntPtr CreateRoundRectRgn
         (int nLeftRect,int nTopRect, int nRightRect,int nBottomRect, int nWidthEllipse, int nHeightEllipse);
+        #endregion 
 
         void Move(object sender, MouseEventArgs e)
         {
@@ -34,16 +37,30 @@ namespace Organizer
             PostMessage(this.Handle, WM_SYSCOMMAND, DOMOVE, 0);
         }
 
+        private string userName;
+        private int iD;
+        private int tabIndex;
         public frmMain(string login)
         {
-            DataBase dataBase = new DataBase();  
+            DataBase dataBase = new DataBase();
 
-            MySqlCommand command = new MySqlCommand("SELECT name FROM Users WHERE login = @uL", dataBase.GetConnection());
-            command.Parameters.Add("@uL", MySqlDbType.VarChar).Value = login;
+            
 
-            dataBase.OpenConnection();
-            string userName = command.ExecuteScalar().ToString();
-            dataBase.CloseConnection();
+            using (MySqlCommand command = new MySqlCommand("SELECT name FROM Users WHERE login = @uL", dataBase.GetConnection()))
+            {
+                command.Parameters.Add("@uL", MySqlDbType.VarChar).Value = login;
+                dataBase.OpenConnection();
+                userName = command.ExecuteScalar().ToString();
+                dataBase.CloseConnection();
+            }
+
+            using (MySqlCommand command = new MySqlCommand("SELECT Id FROM Users WHERE login = @uL", dataBase.GetConnection()))
+            {
+                command.Parameters.Add("@uL", MySqlDbType.VarChar).Value = login;
+                dataBase.OpenConnection();
+                iD = Convert.ToInt32(command.ExecuteScalar());
+                dataBase.CloseConnection();
+            }
 
             InitializeComponent();
             lbUser.Text = $"{userName}";
@@ -58,34 +75,13 @@ namespace Organizer
         private void btnHome_Click(object sender, EventArgs e)
         {
             pnlNav.Top = btnHome.Top;
-            lbltitle.Text = btnHome.Text;
             tabControl1.SelectedIndex = 0;
-
-            using (DataBase dataBase = new DataBase())
-
-            {
-
-            }
-
-
-                DataTable table = new DataTable();
-            MySqlDataAdapter adapter = new MySqlDataAdapter();
-
-            MySqlCommand command = new MySqlCommand("SELECT * FROM Users", dataBase.GetConnection());
-
-            adapter.SelectCommand = command;
-            adapter.Fill(table);
-
-            dataGridView1.DataSource = table;
-            dataBase.CloseConnection();
-
 
         }
 
         private void btnTask_Click(object sender, EventArgs e)
         {
             pnlNav.Top = btnTask.Top;
-            lbltitle.Text = btnTask.Text;
             tabControl1.SelectedIndex = 1;
 
         }
@@ -93,33 +89,46 @@ namespace Organizer
         private void btnCalls_Click(object sender, EventArgs e)
         {
             pnlNav.Top = btnCalls.Top;
-            lbltitle.Text = btnCalls.Text;
             tabControl1.SelectedIndex = 2;
         }
 
         private void btnMeeting_Click(object sender, EventArgs e)
         {
             pnlNav.Top = btnMeeting.Top;
-            lbltitle.Text = btnMeeting.Text;
             tabControl1.SelectedIndex = 3;
         }
         private void btnBirthday_Click(object sender, EventArgs e)
         {
             pnlNav.Top = btnBirthday.Top;
-            lbltitle.Text = btnBirthday.Text;
             tabControl1.SelectedIndex = 4;
         }
         private void btnContacts_Click(object sender, EventArgs e)
         {
             pnlNav.Top = btnContacts.Top;
-            lbltitle.Text = btnContacts.Text;
             tabControl1.SelectedIndex = 5;
+            tabIndex = tabControl1.SelectedIndex;
 
+            DataBase dataBase = new DataBase();
+            DataTable table = new DataTable();
+            MySqlDataAdapter adapter = new MySqlDataAdapter($"SELECT * FROM Сustomers WHERE user_id = {iD}", dataBase.GetConnection());
+            adapter.Fill(table);
+
+            dgvContacts.DataSource = table;
+
+            dgvContacts.Columns[0].Visible = false;
+            dgvContacts.Columns[1].Visible = false;
+
+            dgvContacts.Columns[2].HeaderText = "Имя";
+            dgvContacts.Columns[3].HeaderText = "Фамилия";
+            dgvContacts.Columns[4].HeaderText = "Отчество";
+            dgvContacts.Columns[5].HeaderText = "Дата рождения";
+            dgvContacts.Columns[6].HeaderText = "Телефон";
+
+            dataBase.CloseConnection();
         }
         private void btnsettings_Click(object sender, EventArgs e)
         {
             pnlNav.Top = btnsettings.Top;
-            lbltitle.Text = btnsettings.Text;
             tabControl1.SelectedIndex = 6;
         }
 
@@ -166,6 +175,22 @@ namespace Organizer
         private void btnClose_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void tbSearch_Enter(object sender, EventArgs e)
+        {
+            if (tbSearch.Text == "Строка поиска...")
+                tbSearch.Clear();
+        }
+
+        private void bntAdd_Click(object sender, EventArgs e)
+        {
+            if (tabIndex == 5)
+                new Thread(OpenFormButtonAddContact).Start();
+        }
+        private void OpenFormButtonAddContact()
+        {
+            Application.Run(new frmButtonAddContact(iD));
         }
     }
 }

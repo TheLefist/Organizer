@@ -94,6 +94,7 @@ namespace Organizer
             if (!IsValidMail(tbMail.Text))
             {
                 MessageBox.Show("Некорректный адрес электронной почты");
+                return;
             }
 
 
@@ -125,7 +126,10 @@ namespace Organizer
                     dataBase.CloseConnection();
                     MessageBox.Show("Аккаунт успешно зарегистрирован");
                     Globals.cheakButtonRegistration = 1; 
-                    BeginInvoke((MethodInvoker)(() => { CheakButton(Globals.cheakButtonRegistration); }));
+                    BeginInvoke((MethodInvoker)(() => {
+                        this.Close();
+                        new Thread(OpenForm).Start();
+                    }));
                 }
                 else
                 {

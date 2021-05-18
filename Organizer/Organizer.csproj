@@ -55,6 +55,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataBase.cs" />
+    <Compile Include="Forms\FormsButton\Customers\frmButtonAddContact.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormsButton\Customers\frmButtonAddContact.Designer.cs">
+      <DependentUpon>frmButtonAddContact.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmRegistration.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,6 +82,9 @@
     <Compile Include="Globals.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\FormsButton\Customers\frmButtonAddContact.resx">
+      <DependentUpon>frmButtonAddContact.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmRegistration.resx">
       <DependentUpon>frmRegistration.cs</DependentUpon>
     </EmbeddedResource>
@@ -167,10 +176,34 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icons8_repository.ico" />
+    <None Include="Resources\icons8_search_32px_2.png" />
+    <None Include="Resources\search1.png" />
+    <None Include="Resources\search.png" />
+    <None Include="Resources\Phone.png" />
+    <None Include="Resources\Birthday.png" />
+    <None Include="Resources\Account.png" />
+    <None Include="Resources\Cancel %282%29.png" />
+    <None Include="Resources\Cancel.png" />
+    <None Include="Resources\exit1.png" />
+    <None Include="Resources\exit.png" />
+    <None Include="Resources\icons8_delete_file_32px.png" />
+    <None Include="Resources\icons8_edit_file_32px.png" />
+    <None Include="Resources\icons8_add_32px_1.png" />
+    <None Include="Resources\icons8_add_32px.png" />
+    <None Include="Resources\add1.png" />
+    <None Include="Resources\delete.png" />
+    <None Include="Resources\edit.png" />
+    <None Include="Resources\add.png" />
     <None Include="Resources\mail.png" />
     <None Include="Resources\person.png" />
     <None Include="Resources\Loading.gif" />
     <None Include="Resources\icons8_repository.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Forms\FormsButton\Birthday\" />
+    <Folder Include="Forms\FormsButton\Calls\" />
+    <Folder Include="Forms\FormsButton\Meeting\" />
+    <Folder Include="Forms\FormsButton\Task\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

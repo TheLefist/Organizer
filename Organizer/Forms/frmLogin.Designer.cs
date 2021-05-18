@@ -251,7 +251,7 @@ namespace Organizer
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(68)))), ((int)(((byte)(110)))));
-            this.ClientSize = new System.Drawing.Size(300, 459);
+            this.ClientSize = new System.Drawing.Size(300, 455);
             this.Controls.Add(this.cbRememberMe);
             this.Controls.Add(this.pbLoading);
             this.Controls.Add(this.cbShowPass);
