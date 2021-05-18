@@ -60,6 +60,26 @@ namespace Organizer
             pnlNav.Top = btnHome.Top;
             lbltitle.Text = btnHome.Text;
             tabControl1.SelectedIndex = 0;
+
+            using (DataBase dataBase = new DataBase())
+
+            {
+
+            }
+
+
+                DataTable table = new DataTable();
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
+
+            MySqlCommand command = new MySqlCommand("SELECT * FROM Users", dataBase.GetConnection());
+
+            adapter.SelectCommand = command;
+            adapter.Fill(table);
+
+            dataGridView1.DataSource = table;
+            dataBase.CloseConnection();
+
+
         }
 
         private void btnTask_Click(object sender, EventArgs e)
