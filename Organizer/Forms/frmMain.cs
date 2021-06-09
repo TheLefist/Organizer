@@ -40,6 +40,7 @@ namespace Organizer
         private string userName;
         private int iD;
         private int tabIndex;
+        private int customersID;
         public frmMain(string login)
         {
             DataBase dataBase = new DataBase();
@@ -124,6 +125,9 @@ namespace Organizer
             dgvContacts.Columns[5].HeaderText = "Дата рождения";
             dgvContacts.Columns[6].HeaderText = "Телефон";
 
+            dgvContacts.ClearSelection();
+            customersID = 0;
+
             dataBase.CloseConnection();
         }
         private void btnsettings_Click(object sender, EventArgs e)
@@ -191,6 +195,70 @@ namespace Organizer
         private void OpenFormButtonAddContact()
         {
             Application.Run(new frmButtonAddContact(iD));
+        }
+        private void OpenFormButtonEditContact()
+        {
+            Application.Run(new frmButtonEditContact(customersID));
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (tabIndex == 5)
+                Delete(dgvContacts);
+                
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            if (tabIndex == 5)
+                Search(dgvContacts);
+
+        }
+
+        private void Search(DataGridView DGV)
+        {
+            for (int i = 0; i < DGV.RowCount; i++)
+            {
+                DGV.Rows[i].Selected = false;
+                for (int j = 0; j < DGV.ColumnCount; j++)
+                    if (DGV.Rows[i].Cells[j].Value != null)
+                        if (DGV.Rows[i].Cells[j].Value.ToString().Contains(tbSearch.Text))
+                        {
+                            DGV.Rows[i].Selected = true;
+                            break;
+                        }
+            }
+        }
+        private void Delete(DataGridView DGV)
+        {
+            int rowsCouint = DGV.Rows.Count;
+            if (rowsCouint > 0)
+            {
+                int i = DGV.SelectedCells[0].RowIndex;
+                DGV.Rows.RemoveAt(i);
+                if (i > 0)
+                    DGV.Rows[i - 1].Selected = true;
+            }
+            else
+                MessageBox.Show("Нет записей на удаление");
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                customersID = Convert.ToInt32(dgvContacts.CurrentRow.Cells[0].Value);
+            }
+            catch
+            {
+                MessageBox.Show("Строка не была выбрана");
+                return;
+            }
+            
+            if (tabIndex == 5)
+                new Thread(OpenFormButtonEditContact).Start();
+
         }
     }
 }

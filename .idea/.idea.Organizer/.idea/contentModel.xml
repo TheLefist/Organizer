@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\Ready\AppData\Local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Ready\AppData\Local\JetBrains\Rider2020.2\resharper-host\Local\Transient\Rider\v202\SolutionCaches\_Organizer.-1328804099.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Ready\Desktop\Organizer\Organizer" t="IncludeFlat">
+      <e p="Organizer" t="IncludeRecursive">
+        <e p="App.config" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="DataBase.cs" t="Include" />
+        <e p="Forms" t="Include">
+          <e p="FormsButton" t="Include">
+            <e p="Birthday" t="Include" />
+            <e p="Calls" t="Include" />
+            <e p="Customers" t="Include">
+              <e p="frmButtonAddContact.cs" t="Include" />
+              <e p="frmButtonAddContact.Designer.cs" t="Include" />
+              <e p="frmButtonAddContact.resx" t="Include" />
+              <e p="frmButtonEditContact.cs" t="Include" />
+              <e p="frmButtonEditContact.Designer.cs" t="Include" />
+              <e p="frmButtonEditContact.resx" t="Include" />
+            </e>
+            <e p="Meeting" t="Include" />
+            <e p="Task" t="Include" />
+          </e>
+          <e p="frmLogin.cs" t="Include" />
+          <e p="frmLogin.Designer.cs" t="Include" />
+          <e p="frmLogin.resx" t="Include" />
+          <e p="frmMain.cs" t="Include" />
+          <e p="frmMain.Designer.cs" t="Include" />
+          <e p="frmMain.resx" t="Include" />
+          <e p="frmRegistration.cs" t="Include" />
+          <e p="frmRegistration.Designer.cs" t="Include" />
+          <e p="frmRegistration.resx" t="Include" />
+        </e>
+        <e p="Globals.cs" t="Include" />
+        <e p="icons8_repository.ico" t="Include" />
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="Organizer.csproj" t="IncludeRecursive" />
+        <e p="Program.cs" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+          <e p="Resources.Designer.cs" t="Include" />
+          <e p="Resources.resx" t="Include" />
+          <e p="Settings.Designer.cs" t="Include" />
+          <e p="Settings.settings" t="Include" />
+        </e>
+        <e p="Resources" t="Include">
+          <e p="Account.png" t="Include" />
+          <e p="add.png" t="Include" />
+          <e p="add1.png" t="Include" />
+          <e p="Birthday.png" t="Include" />
+          <e p="Cancel (2).png" t="Include" />
+          <e p="Cancel.png" t="Include" />
+          <e p="Conact.png" t="Include" />
+          <e p="delete.png" t="Include" />
+          <e p="Edit (2).png" t="Include" />
+          <e p="edit.png" t="Include" />
+          <e p="edit1.png" t="Include" />
+          <e p="exit.png" t="Include" />
+          <e p="exit1.png" t="Include" />
+          <e p="home.png" t="Include" />
+          <e p="home1.png" t="Include" />
+          <e p="icons8_add_32px.png" t="Include" />
+          <e p="icons8_add_32px_1.png" t="Include" />
+          <e p="icons8_birthday_25px.png" t="Include" />
+          <e p="icons8_delete_file_32px.png" t="Include" />
+          <e p="icons8_duplicate_contacts_25px.png" t="Include" />
+          <e p="icons8_edit_file_32px.png" t="Include" />
+          <e p="icons8_lock_25px.png" t="Include" />
+          <e p="icons8_lock_25px_1.png" t="Include" />
+          <e p="icons8_meeting_room_25px.png" t="Include" />
+          <e p="icons8_repository.ico" t="Include" />
+          <e p="icons8_ringer_volume_25px.png" t="Include" />
+          <e p="icons8_search_25px.png" t="Include" />
+          <e p="icons8_search_32px_2.png" t="Include" />
+          <e p="icons8_task_25px.png" t="Include" />
+          <e p="icons8_user_25px.png" t="Include" />
+          <e p="icons8_user_25px_1.png" t="Include" />
+          <e p="Loading.gif" t="Include" />
+          <e p="Lrg-settings.png" t="Include" />
+          <e p="Lrg-settings1.png" t="Include" />
+          <e p="mail.png" t="Include" />
+          <e p="person.png" t="Include" />
+          <e p="Phone.png" t="Include" />
+          <e p="search.png" t="Include" />
+          <e p="search1.png" t="Include" />
+          <e p="settings.png" t="Include" />
+          <e p="settings1.png" t="Include" />
+          <e p="Untitled-11.png" t="Include" />
+          <e p="Untitled-111.png" t="Include" />
+        </e>
+      </e>
+      <e p="Organizer.sln" t="IncludeFlat" />
+      <e p="packages" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>

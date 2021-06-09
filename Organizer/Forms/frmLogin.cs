@@ -180,5 +180,13 @@ namespace Organizer
         {
             this.WindowState = FormWindowState.Minimized;
         }
+
+        private void frmLogin_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == (char)Keys.Enter)
+            {
+                btnLogin.PerformClick();
+            }
+        }
     }
 }

@@ -91,7 +91,7 @@ namespace Organizer
             this.btnRegistration.Location = new System.Drawing.Point(94, 505);
             this.btnRegistration.Name = "btnRegistration";
             this.btnRegistration.Size = new System.Drawing.Size(246, 42);
-            this.btnRegistration.TabIndex = 26;
+            this.btnRegistration.TabIndex = 6;
             this.btnRegistration.Text = "Зарегистрироваться";
             this.btnRegistration.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnRegistration.UseVisualStyleBackColor = false;
@@ -107,7 +107,7 @@ namespace Organizer
             this.tbUser.MaxLength = 20;
             this.tbUser.Name = "tbUser";
             this.tbUser.Size = new System.Drawing.Size(265, 26);
-            this.tbUser.TabIndex = 27;
+            this.tbUser.TabIndex = 3;
             this.tbUser.Text = "Введите имя аккаунта";
             this.tbUser.Enter += new System.EventHandler(this.tbUser_Enter);
             this.tbUser.Leave += new System.EventHandler(this.tbUser_Leave);
@@ -122,7 +122,7 @@ namespace Organizer
             this.tbPass.MaxLength = 32;
             this.tbPass.Name = "tbPass";
             this.tbPass.Size = new System.Drawing.Size(265, 26);
-            this.tbPass.TabIndex = 28;
+            this.tbPass.TabIndex = 4;
             this.tbPass.Text = "Введите пароль";
             this.tbPass.Enter += new System.EventHandler(this.tbPass_Enter);
             this.tbPass.Leave += new System.EventHandler(this.tbPass_Leave);
@@ -136,7 +136,7 @@ namespace Organizer
             this.lbLogin.Location = new System.Drawing.Point(39, 57);
             this.lbLogin.Name = "lbLogin";
             this.lbLogin.Size = new System.Drawing.Size(367, 53);
-            this.lbLogin.TabIndex = 19;
+            this.lbLogin.TabIndex = 8;
             this.lbLogin.Text = "</Registration>";
             // 
             // btnClose
@@ -149,7 +149,7 @@ namespace Organizer
             this.btnClose.Location = new System.Drawing.Point(409, 3);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(36, 36);
-            this.btnClose.TabIndex = 29;
+            this.btnClose.TabIndex = 1;
             this.btnClose.Text = "X";
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -162,7 +162,7 @@ namespace Organizer
             this.panel3.Location = new System.Drawing.Point(-2, -4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(630, 39);
-            this.panel3.TabIndex = 30;
+            this.panel3.TabIndex = 9;
             this.panel3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel3_MouseDown);
             // 
             // btnHide
@@ -175,7 +175,7 @@ namespace Organizer
             this.btnHide.Location = new System.Drawing.Point(372, 3);
             this.btnHide.Name = "btnHide";
             this.btnHide.Size = new System.Drawing.Size(36, 36);
-            this.btnHide.TabIndex = 30;
+            this.btnHide.TabIndex = 0;
             this.btnHide.Text = "-";
             this.btnHide.UseVisualStyleBackColor = false;
             this.btnHide.Click += new System.EventHandler(this.btnHide_Click);
@@ -189,7 +189,7 @@ namespace Organizer
             this.btnLogin.Location = new System.Drawing.Point(94, 563);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(246, 42);
-            this.btnLogin.TabIndex = 31;
+            this.btnLogin.TabIndex = 7;
             this.btnLogin.Text = "Авторизоваться";
             this.btnLogin.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnLogin.UseVisualStyleBackColor = false;
@@ -202,7 +202,7 @@ namespace Organizer
             this.cbShowPass.Location = new System.Drawing.Point(48, 446);
             this.cbShowPass.Name = "cbShowPass";
             this.cbShowPass.Size = new System.Drawing.Size(114, 17);
-            this.cbShowPass.TabIndex = 32;
+            this.cbShowPass.TabIndex = 0;
             this.cbShowPass.Text = "Показать пароль";
             this.cbShowPass.UseVisualStyleBackColor = true;
             this.cbShowPass.CheckedChanged += new System.EventHandler(this.cbShowPass_CheckedChanged);
@@ -217,7 +217,7 @@ namespace Organizer
             this.tbMail.MaxLength = 255;
             this.tbMail.Name = "tbMail";
             this.tbMail.Size = new System.Drawing.Size(265, 26);
-            this.tbMail.TabIndex = 38;
+            this.tbMail.TabIndex = 2;
             this.tbMail.Text = "Введите ваш e-mail";
             this.tbMail.Enter += new System.EventHandler(this.tbMail_Enter);
             this.tbMail.Leave += new System.EventHandler(this.tbMail_Leave);
@@ -232,7 +232,7 @@ namespace Organizer
             this.tbName.MaxLength = 30;
             this.tbName.Name = "tbName";
             this.tbName.Size = new System.Drawing.Size(265, 26);
-            this.tbName.TabIndex = 37;
+            this.tbName.TabIndex = 1;
             this.tbName.Text = "Введите ваше имя";
             this.tbName.Enter += new System.EventHandler(this.tbName_Enter);
             this.tbName.Leave += new System.EventHandler(this.tbName_Leave);
@@ -247,7 +247,7 @@ namespace Organizer
             this.tbPass2.MaxLength = 32;
             this.tbPass2.Name = "tbPass2";
             this.tbPass2.Size = new System.Drawing.Size(265, 26);
-            this.tbPass2.TabIndex = 41;
+            this.tbPass2.TabIndex = 5;
             this.tbPass2.Tag = "";
             this.tbPass2.Text = "Введите пароль ещё раз";
             this.tbPass2.Enter += new System.EventHandler(this.tbPass2_Enter);
@@ -445,6 +445,8 @@ namespace Organizer
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmRegistration";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "38";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmRegistration_KeyDown);
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbLoading)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();

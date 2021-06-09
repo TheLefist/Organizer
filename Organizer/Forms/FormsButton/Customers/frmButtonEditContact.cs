@@ -14,7 +14,7 @@ using System.Windows.Forms;
 
 namespace Organizer
 {
-    public partial class frmButtonAddContact : Form
+    public partial class frmButtonEditContact : Form
     {
         #region Import
         [DllImport("user32", CharSet = CharSet.Auto)]
@@ -32,15 +32,44 @@ namespace Organizer
         (int nLeftRect, int nTopRect, int nRightRect, int nBottomRect, int nWidthEllipse, int nHeightEllipse);
         #endregion 
 
-        int userID;
-        static string name = "Имя";
-        static string surname = "Фамилия";
-        static string patronymic = "Отчество";
+        int customersID;
+        static string name;
+        static string surname;
+        static string patronymic;
+        static string data;
+        static string phone;
 
-        public frmButtonAddContact(int userID)
+        public frmButtonEditContact(int customersID)
         {
             InitializeComponent();
-            this.userID = userID;
+            this.customersID = customersID;
+
+            DataBase dataBase = new DataBase();
+            using (MySqlCommand command = new MySqlCommand("SELECT * FROM Сustomers WHERE id_customers = @customersID", dataBase.GetConnection()))
+            {
+                command.Parameters.Add("@customersID", MySqlDbType.Int32).Value = customersID;
+                dataBase.OpenConnection();
+
+                MySqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    name = reader[2].ToString();
+                    tbName.Text = name;
+                    surname = reader[3].ToString();
+                    tbSurname.Text = surname;
+                    patronymic = reader[4].ToString();
+                    tbPatronymic.Text = patronymic;
+                    data = reader[5].ToString();
+                    data = data.Substring(0, 10);
+                    tbBirthday.Text = data;
+                    phone = reader[6].ToString();
+                    tbPhone.Text = phone;
+                }
+                reader.Close();
+                dataBase.CloseConnection();
+            }
+
             Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 25, 25));
         }
 
@@ -97,16 +126,6 @@ namespace Organizer
         async private void btnAdd_Click(object sender, EventArgs e)
         {
 
-            //Заполнены ли стандартные поля
-            if ((tbName.Text == name) ||
-                (tbSurname.Text == surname) ||
-                (tbPatronymic.Text == patronymic))
-            {
-                MessageBox.Show("Не все поля были заполнены");
-                return;
-            }
-
-
             DateTime dt;
             if (!DateTime.TryParse(tbBirthday.Text, out dt))
             {
@@ -120,14 +139,13 @@ namespace Organizer
                 return;
             }
 
-            CheakButton(Globals.cheakButtonAddContact);
             await Task.Run(() => {
 
                 DataBase dataBase = new DataBase();
 
-                string request = "INSERT INTO Сustomers (user_id, name, surname, patronymic, date_of_birth, phone) VALUES (@userID, @name, @surname, @patronymic, @date_of_birth, @phone)";
+                string request = "UPDATE Сustomers SET name = @name, surname = @surname, patronymic = @patronymic, date_of_birth = @date_of_birth, phone = @phone WHERE Сustomers.id_customers = @customersID;";
                 MySqlCommand command = new MySqlCommand(request, dataBase.GetConnection());
-                command.Parameters.Add("@userID", MySqlDbType.Int32).Value = userID;
+                command.Parameters.Add("@customersID", MySqlDbType.Int32).Value = customersID;
                 command.Parameters.Add("@name", MySqlDbType.VarChar).Value = tbName.Text;
                 command.Parameters.Add("@surname", MySqlDbType.VarChar).Value = tbSurname.Text;
                 command.Parameters.Add("@patronymic", MySqlDbType.VarChar).Value = tbPatronymic.Text;
@@ -141,16 +159,13 @@ namespace Organizer
                 catch
                 {
                     MessageBox.Show("Ошибка установки соединения с базой данных");
-                    Globals.cheakButtonAddContact = 1;
-                    BeginInvoke((MethodInvoker)(() => { CheakButton(Globals.cheakButtonAddContact); }));
                     return;
                 }
 
                 if (command.ExecuteNonQuery() == 1)
                 {
-
                     dataBase.CloseConnection();
-                    MessageBox.Show("Данные успешно внесены. Для отображения обновите вкладку");
+                    MessageBox.Show("Данные успешно изменены. Для отображения обновите вкладку");
                     BeginInvoke((MethodInvoker)(() => {
                         this.Close();
                     }));
@@ -163,67 +178,6 @@ namespace Organizer
                 }
             });
 
-        }
-
-        private void TextBoxClear(object sender, EventArgs e)
-        {
-            ((TextBox)sender).Clear();
-        }
-
-        private void tbBirthday_Enter(object sender, EventArgs e)
-        {
-            BeginInvoke((MethodInvoker)(() =>
-            {
-                tbBirthday.Clear();
-                tbBirthday.Select(0, 0);
-            }));
-                
-        }
-
-        private void tbPhone_Enter(object sender, EventArgs e)
-        {
-            BeginInvoke((MethodInvoker)(() =>
-            {
-                tbPhone.Clear();
-                tbPhone.Select(1, 0);
-            }));
-        }
-            
-        private void tbName_Enter(object sender, EventArgs e)
-        {
-            if (tbName.Text == name)
-                tbName.Clear();
-        }
-
-        private void tbName_Leave(object sender, EventArgs e)
-        {
-            if (tbName.Text == "")
-                tbName.Text = name;
-        }
-
-        private void tbSurname_Enter(object sender, EventArgs e)
-        {
-            if (tbSurname.Text == surname)
-                tbSurname.Clear();
-
-        }
-
-        private void tbSurname_Leave(object sender, EventArgs e)
-        {
-            if (tbSurname.Text == "")
-                tbSurname.Text = surname;
-        }
-
-        private void tbPatronymic_Enter(object sender, EventArgs e)
-        {
-            if (tbPatronymic.Text == patronymic)
-                tbPatronymic.Clear();
-        }
-
-        private void tbPatronymic_Leave(object sender, EventArgs e)
-        {
-            if (tbPatronymic.Text == "")
-                tbPatronymic.Text = patronymic;
         }
     }
 }

@@ -8,6 +8,8 @@ namespace Organizer
 {
     class Globals
     {
-        public static int cheakButtonLogin = 0, cheakButtonRegistration = 0;
+        public static int   cheakButtonLogin = 0,
+                            cheakButtonRegistration = 0,
+                            cheakButtonAddContact = 0;
     }
 }

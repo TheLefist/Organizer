@@ -55,6 +55,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataBase.cs" />
+    <Compile Include="Forms\FormsButton\Customers\frmButtonEditContact.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormsButton\Customers\frmButtonEditContact.Designer.cs">
+      <DependentUpon>frmButtonEditContact.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormsButton\Customers\frmButtonAddContact.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -82,6 +88,9 @@
     <Compile Include="Globals.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\FormsButton\Customers\frmButtonEditContact.resx">
+      <DependentUpon>frmButtonEditContact.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormsButton\Customers\frmButtonAddContact.resx">
       <DependentUpon>frmButtonAddContact.cs</DependentUpon>
     </EmbeddedResource>
@@ -176,6 +185,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icons8_repository.ico" />
+    <None Include="Resources\Edit %282%29.png" />
+    <None Include="Resources\edit1.png" />
     <None Include="Resources\icons8_search_32px_2.png" />
     <None Include="Resources\search1.png" />
     <None Include="Resources\search.png" />

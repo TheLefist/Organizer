@@ -296,5 +296,13 @@ namespace Organizer
             lbPassLenght.Text = (tbPass.MaxLength - tbPass.Text.Length).ToString();
             lbPass2Lenght.Text = (tbPass2.MaxLength - tbPass2.Text.Length).ToString();
         }
+
+        private void frmRegistration_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == (char)Keys.Enter)
+            {
+                btnRegistration.PerformClick();
+            }
+        }
     }
 }

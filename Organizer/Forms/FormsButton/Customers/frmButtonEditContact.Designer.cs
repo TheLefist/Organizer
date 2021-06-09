@@ -1,7 +1,7 @@
 ﻿
 namespace Organizer
 {
-    partial class frmButtonAddContact
+    partial class frmButtonEditContact
     {
         /// <summary>
         /// Обязательная переменная конструктора.
@@ -41,6 +41,8 @@ namespace Organizer
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.tbBirthday = new System.Windows.Forms.MaskedTextBox();
+            this.tbPhone = new System.Windows.Forms.MaskedTextBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
@@ -48,8 +50,6 @@ namespace Organizer
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.tbBirthday = new System.Windows.Forms.MaskedTextBox();
-            this.tbPhone = new System.Windows.Forms.MaskedTextBox();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
@@ -95,11 +95,9 @@ namespace Organizer
             this.tbName.Location = new System.Drawing.Point(62, 91);
             this.tbName.MaxLength = 32;
             this.tbName.Name = "tbName";
-            this.tbName.Size = new System.Drawing.Size(191, 26);
+            this.tbName.Size = new System.Drawing.Size(207, 26);
             this.tbName.TabIndex = 1;
             this.tbName.Text = "Имя";
-            this.tbName.Enter += new System.EventHandler(this.tbName_Enter);
-            this.tbName.Leave += new System.EventHandler(this.tbName_Leave);
             // 
             // tbSurname
             // 
@@ -110,11 +108,9 @@ namespace Organizer
             this.tbSurname.Location = new System.Drawing.Point(62, 141);
             this.tbSurname.MaxLength = 32;
             this.tbSurname.Name = "tbSurname";
-            this.tbSurname.Size = new System.Drawing.Size(191, 26);
+            this.tbSurname.Size = new System.Drawing.Size(207, 26);
             this.tbSurname.TabIndex = 2;
             this.tbSurname.Text = "Фамилия";
-            this.tbSurname.Enter += new System.EventHandler(this.tbSurname_Enter);
-            this.tbSurname.Leave += new System.EventHandler(this.tbSurname_Leave);
             // 
             // btnClose
             // 
@@ -166,11 +162,9 @@ namespace Organizer
             this.tbPatronymic.Location = new System.Drawing.Point(62, 198);
             this.tbPatronymic.MaxLength = 32;
             this.tbPatronymic.Name = "tbPatronymic";
-            this.tbPatronymic.Size = new System.Drawing.Size(191, 26);
+            this.tbPatronymic.Size = new System.Drawing.Size(207, 26);
             this.tbPatronymic.TabIndex = 3;
             this.tbPatronymic.Text = "Отчество";
-            this.tbPatronymic.Enter += new System.EventHandler(this.tbPatronymic_Enter);
-            this.tbPatronymic.Leave += new System.EventHandler(this.tbPatronymic_Leave);
             // 
             // panel4
             // 
@@ -195,6 +189,33 @@ namespace Organizer
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(246, 1);
             this.panel6.TabIndex = 37;
+            // 
+            // tbBirthday
+            // 
+            this.tbBirthday.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(68)))), ((int)(((byte)(110)))));
+            this.tbBirthday.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbBirthday.Font = new System.Drawing.Font("Corbel", 15.75F, System.Drawing.FontStyle.Bold);
+            this.tbBirthday.ForeColor = System.Drawing.Color.White;
+            this.tbBirthday.Location = new System.Drawing.Point(62, 256);
+            this.tbBirthday.Mask = "00/00/0000";
+            this.tbBirthday.Name = "tbBirthday";
+            this.tbBirthday.Size = new System.Drawing.Size(100, 26);
+            this.tbBirthday.TabIndex = 4;
+            this.tbBirthday.Text = "01012000";
+            this.tbBirthday.ValidatingType = typeof(System.DateTime);
+            // 
+            // tbPhone
+            // 
+            this.tbPhone.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(68)))), ((int)(((byte)(110)))));
+            this.tbPhone.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbPhone.Font = new System.Drawing.Font("Corbel", 15.75F, System.Drawing.FontStyle.Bold);
+            this.tbPhone.ForeColor = System.Drawing.Color.White;
+            this.tbPhone.Location = new System.Drawing.Point(62, 313);
+            this.tbPhone.Mask = "+0 000 000-00-00";
+            this.tbPhone.Name = "tbPhone";
+            this.tbPhone.Size = new System.Drawing.Size(164, 26);
+            this.tbPhone.TabIndex = 5;
+            this.tbPhone.Text = "79999999999";
             // 
             // pictureBox2
             // 
@@ -254,12 +275,12 @@ namespace Organizer
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd.Font = new System.Drawing.Font("Corbel", 15F, System.Drawing.FontStyle.Bold);
             this.btnAdd.ForeColor = System.Drawing.Color.White;
-            this.btnAdd.Image = global::Organizer.Properties.Resources.icons8_add_32px_1;
+            this.btnAdd.Image = global::Organizer.Properties.Resources.Edit__2_;
             this.btnAdd.Location = new System.Drawing.Point(-2, 419);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(146, 42);
             this.btnAdd.TabIndex = 6;
-            this.btnAdd.Text = "Добавить";
+            this.btnAdd.Text = "Изменить";
             this.btnAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
@@ -273,36 +294,7 @@ namespace Organizer
             this.pictureBox1.TabIndex = 20;
             this.pictureBox1.TabStop = false;
             // 
-            // tbBirthday
-            // 
-            this.tbBirthday.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(68)))), ((int)(((byte)(110)))));
-            this.tbBirthday.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbBirthday.Font = new System.Drawing.Font("Corbel", 15.75F, System.Drawing.FontStyle.Bold);
-            this.tbBirthday.ForeColor = System.Drawing.Color.White;
-            this.tbBirthday.Location = new System.Drawing.Point(62, 256);
-            this.tbBirthday.Mask = "0000/00/00";
-            this.tbBirthday.Name = "tbBirthday";
-            this.tbBirthday.Size = new System.Drawing.Size(191, 26);
-            this.tbBirthday.TabIndex = 4;
-            this.tbBirthday.Text = "20000101";
-            this.tbBirthday.ValidatingType = typeof(System.DateTime);
-            this.tbBirthday.Enter += new System.EventHandler(this.tbBirthday_Enter);
-            // 
-            // tbPhone
-            // 
-            this.tbPhone.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(68)))), ((int)(((byte)(110)))));
-            this.tbPhone.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbPhone.Font = new System.Drawing.Font("Corbel", 15.75F, System.Drawing.FontStyle.Bold);
-            this.tbPhone.ForeColor = System.Drawing.Color.White;
-            this.tbPhone.Location = new System.Drawing.Point(62, 313);
-            this.tbPhone.Mask = "+0 000 000-00-00";
-            this.tbPhone.Name = "tbPhone";
-            this.tbPhone.Size = new System.Drawing.Size(191, 26);
-            this.tbPhone.TabIndex = 5;
-            this.tbPhone.Text = "79999999999";
-            this.tbPhone.Enter += new System.EventHandler(this.tbPhone_Enter);
-            // 
-            // frmButtonAddContact
+            // frmButtonEditContact
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -328,7 +320,7 @@ namespace Organizer
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lbltitle);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "frmButtonAddContact";
+            this.Name = "frmButtonEditContact";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();

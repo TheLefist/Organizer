@@ -89,7 +89,7 @@ namespace Organizer
             this.btnLogin.Location = new System.Drawing.Point(29, 334);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(246, 42);
-            this.btnLogin.TabIndex = 25;
+            this.btnLogin.TabIndex = 3;
             this.btnLogin.Text = "Войти";
             this.btnLogin.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnLogin.UseVisualStyleBackColor = false;
@@ -120,7 +120,7 @@ namespace Organizer
             this.tbUser.MaxLength = 20;
             this.tbUser.Name = "tbUser";
             this.tbUser.Size = new System.Drawing.Size(213, 26);
-            this.tbUser.TabIndex = 27;
+            this.tbUser.TabIndex = 1;
             this.tbUser.Text = "UserName";
             this.tbUser.Enter += new System.EventHandler(this.tbUser_Enter);
             this.tbUser.Leave += new System.EventHandler(this.tbUser_Leave);
@@ -136,7 +136,7 @@ namespace Organizer
             this.tbPass.Name = "tbPass";
             this.tbPass.PasswordChar = '*';
             this.tbPass.Size = new System.Drawing.Size(213, 26);
-            this.tbPass.TabIndex = 28;
+            this.tbPass.TabIndex = 2;
             this.tbPass.Text = "PassWord";
             this.tbPass.Enter += new System.EventHandler(this.tbPass_Enter);
             this.tbPass.Leave += new System.EventHandler(this.tbPass_Leave);
@@ -242,7 +242,7 @@ namespace Organizer
             this.cbRememberMe.Location = new System.Drawing.Point(29, 302);
             this.cbRememberMe.Name = "cbRememberMe";
             this.cbRememberMe.Size = new System.Drawing.Size(111, 17);
-            this.cbRememberMe.TabIndex = 33;
+            this.cbRememberMe.TabIndex = 0;
             this.cbRememberMe.Text = "Запомнить меня";
             this.cbRememberMe.UseVisualStyleBackColor = true;
             // 
@@ -269,6 +269,7 @@ namespace Organizer
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmLogin_KeyDown);
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbLoading)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
